@@ -12,6 +12,7 @@ Firebird "ODS 11 to 12" is a scripting tool that converts Firebird database in O
 | Firebird 3.0   | ODS 12 |
 | Firebird 3.x   | ODS 12 |
 
+*It is worth noting that Firebird 3.x does not support ODS 11 format, it requires ODS 12 to work. Therefore, when migrating to Firebird 3.x server, database files must be updated.*
 
 The tool uses files extracted from the Firebird 2.5.9 and 3.0.7 server, mainly the gbak tool, but also many other files, necessary for gbak operation. 
 
@@ -20,6 +21,3 @@ To perform the database conversion you do not need to install Firebird server, n
 The scripts were written in two versions, under Windows (batch script) and under Linux (bash script).
 
 In the Linux version, the tool requires root privileges to work, this is due to the needs of gbak itself.
-
-
-*It is worth noting that Firebird 3.x does not support ODS 11 format, it requires ODS 12 to work. Therefore, when migrating to Firebird 3.x server, database files must be updated.*

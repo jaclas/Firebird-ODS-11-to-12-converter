@@ -1,8 +1,5 @@
 #!/bin/sh
 
-SCRIPT=$(readlink -f "$0")
-SCRIPTPATH=$(dirname "$SCRIPT")
-
 showUsage() {
 	if [ "$1" ]; then
 		echo 'error!'
@@ -35,21 +32,31 @@ removeOldLogs() {
 	}
 
 convertODS() {
-	LD_LIBRARY_PATH25="$SCRIPTPATH/fb25"
-	TEMP_PATH="$SCRIPTPATH/temp"
-	LD_LIBRARY_PATH30="$SCRIPTPATH/fb30"
+	LD_LIBRARY_PATH25="fb25"
+	TEMP_PATH="temp"
+	LD_LIBRARY_PATH30="fb30"
 
     echo 
 	echo I start converting the database structure...
 	echo
 	echo "$1 (ODS11) => $2 (ODS12)"
 	echo
-	echo "Please wait, depending on the size of the input database, in some cases, this may take several minutes..."
+	echo -n "Please wait, depending on the size of the input database, in some cases, this may take several minutes..."
+	
 	
 	mkdir -p "$TEMP_PATH"
 	fb25gbak='LD_LIBRARY_PATH="'"$LD_LIBRARY_PATH25"'" FIREBIRD="'"$LD_LIBRARY_PATH25"'" FIREBIRD_TMP="'"$TEMP_PATH"'" FIREBIRD_LOCK="'"$TEMP_PATH"'" fb25/gbak -z -b -g -v -t -st t -y backup_25.log '$1' stdout'
 	fb30gbak='LD_LIBRARY_PATH="'"$LD_LIBRARY_PATH30"'" FIREBIRD="'"$LD_LIBRARY_PATH30"'" FIREBIRD_TMP="'"$TEMP_PATH"'" FIREBIRD_LOCK="'"$TEMP_PATH"'" fb30/gbak -rep -v -y restore_30.log stdin '$2
+
 	eval "$fb25gbak | $fb30gbak"
+	if [ $? = 0 ]; then
+		echo 
+		echo "Successful conversion of the Firebird database structure!"
+		echo "New database file is: $2"
+	else
+		echo '[ERROR]'
+		echo "Something went wrong during the database conversion! See to logs: backup_25.log and/or restore_30.log"
+	fi
 	}
 
 	if [ "$1" ]; then

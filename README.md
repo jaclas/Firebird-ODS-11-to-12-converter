@@ -3,14 +3,14 @@
 
 Firebird "ODS 11 to 12" is a scripting tool that converts Firebird database in ODS 11 structure to ODS 12. In practice it means that the tool converts the database file from Firebird 2.x to a form compatible with Firebird 3.x.
 
-| server version |   ODS  |
-|----------------|--------|
-| Firebird 2.0   | ODS 11 |
-| Firebird 2.1   | ODS 11 |
-| Firebird 2.5   | ODS 11 |
-| Firebird 2.5.x | ODS 11 |
-| Firebird 3.0   | ODS 12 |
-| Firebird 3.x   | ODS 12 |
+| server version |    ODS   |
+|----------------|----------|
+| Firebird 2.0   | ODS 11.0 |
+| Firebird 2.1   | ODS 11.1 |
+| Firebird 2.5   | ODS 11.2 |
+| Firebird 2.5.x | ODS 11.2 |
+| Firebird 3.0   | ODS 12.0 |
+| Firebird 3.x   | ODS 12.0 |
 
 *It is worth noting that Firebird 3.x does not support ODS 11 format, it requires ODS 12 to work. Therefore, when migrating to Firebird 3.x server, database files must be updated.*
 

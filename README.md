@@ -21,3 +21,13 @@ To perform the database conversion you do not need to install Firebird server, n
 The scripts were written in two versions, under Windows (batch script) and under Linux (bash script).
 
 In the Linux version, the tool requires root privileges to work, this is due to the needs of gbak itself.
+
+The syntax for converting the database from ODS11 to ODS12 is as follows:
+
+ODS11to12 dbfile_ODS11.fdb dbfile_ODS12.fdb
+
+where:
+
+dbfile_ODS11.fdb - is the name of the database file to be converted, compatible with ODS11 format
+
+dbfile_ODS12.fdb - is the name of the new file, where the database will be saved in ODS12 format
